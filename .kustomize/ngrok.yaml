@@ -1,0 +1,8 @@
+apiVersion: ngrok.com/v1alpha1
+kind: Ngrok
+metadata:
+  name: galiciachallenge-kubernetes
+spec:
+  protocol: http
+  service: galiciachallenge-kubernetes
+  port: 80
