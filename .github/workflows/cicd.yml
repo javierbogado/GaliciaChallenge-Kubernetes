@@ -8,7 +8,7 @@ jobs:
     - uses: actions/checkout@master
     #en este ejemplo no tenemos q hacer un build luego un push por linea de comandos sino q lo hace el feature docker/build-push-action@v2
     - name: build and push to docker
-      uses: docker/build-push-action@v2
+      uses: docker/build-push-action@v1
       with:
       #user y pass del docker registry
         username: ${{ secrets.DOCKER_USERNAME }}
