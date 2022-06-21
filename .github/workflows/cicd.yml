@@ -27,17 +27,18 @@ jobs:
     needs: build-and-push
     steps:
     - name: deploy to cluster
-      uses: steebchen/kubectl@v2.0.0      
+      uses: steebchen/kubectl@master
+      env:
+        KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
       with:
-        config: ${{ secrets.KUBE_CONFIG_DATA }}
-        version: v1.21.0 # specify kubectl binary version explicitly
-        command: set image --record deployment/galiciachallenge-kubernetes container=${{ github.repository }}:${{ github.sha }}
+        args: set image --record deployment/my-app galiciachallenge-kubernetes=${{ github.repository }}:${{ github.sha }}
     - name: verify deployment
-      uses: steebchen/kubectl@v2.0.0      
+      uses: steebchen/kubectl@master
+      env:
+        KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
+        KUBECTL_VERSION: "1.20"
       with:
-        config: ${{ secrets.KUBE_CONFIG_DATA }}
-        version: v1.21.0 # specify kubectl binary version explicitly
-        command: rollout status deployment/galiciachallenge-kubernetes
+        args: '"rollout status deployment/my-app"'
   ngrok-watcher:
     name: Ngrok watcher
     runs-on: ubuntu-latest
