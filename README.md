@@ -2,7 +2,7 @@
 ejemplo con kubernetes on github
 
 -Previamente en el cluster k8s aplicar:
-kubectl apply -f deployment.yml
+kubectl apply -f deployment.yml (con el name "my-app")
 kubectl apply -f service.yml
 
 Variables de entorno github secrets necesarios en .github\workflows\cicd.yml:
