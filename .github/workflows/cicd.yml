@@ -19,7 +19,7 @@ jobs:
         tag_with_ref: true
         #cuando construyo la imagen le appendea el sha
         tag_with_sha: true
-        #github.sha usa la version corta del sha
+        #github.sha usa la version corta del sha 
         tags: ${{ github.sha }}
   deploy-to-cluster:
     name: deploy to cluster
