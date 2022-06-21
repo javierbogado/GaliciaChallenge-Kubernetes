@@ -1,0 +1,16 @@
+---
+apiVersion: "v1"
+kind: "Service"
+metadata:
+  name: "entrevista-service"
+  namespace: "default"
+  labels:
+    app: "entrevista"
+spec:
+  ports:
+  - protocol: "TCP"
+    port: 80
+  selector:
+    app: "entrevista"
+  type: "LoadBalancer"
+  loadBalancerIP: ""
